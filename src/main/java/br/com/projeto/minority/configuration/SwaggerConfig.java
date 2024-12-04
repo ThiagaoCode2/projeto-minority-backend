@@ -19,7 +19,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 
 @Configuration
-public class SweggerConfig 
+public class SwaggerConfig 
 {
 	@Bean
 	public Docket api( ) 
@@ -54,7 +54,7 @@ public class SweggerConfig
 	{
 		return new Contact( "Thiago Pedroso",
 				            "https://github.com/ThiagaoCode2",
-				            "ti.pedroso.soares@gmail.com" );
+				            "thi.pedroso.soares@gmail.com" );
 	}
 	
 	private static List<Response> responseMessage( ) 

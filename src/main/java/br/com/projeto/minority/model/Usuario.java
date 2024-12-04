@@ -39,7 +39,7 @@ public class Usuario
 	@Size( min = 5, max = 100, message = "senha de 5 a 100" )
 	private String senha;
 	
-	@Column( name = "dt_nascimento" )
+	@Column( name = "dtNascimento" )
 	@JsonFormat( pattern ="yyyy-MM-dd" )
 	private LocalDate dataNascimento;
 	
