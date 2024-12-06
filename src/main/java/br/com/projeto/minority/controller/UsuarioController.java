@@ -36,23 +36,11 @@ public class UsuarioController
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@PostMapping( "/logar" )
-	public ResponseEntity<UsuarioDTO> Autentication( @RequestBody Optional<UsuarioDTO> user )
-	{
-		return usuarioService.Logar( user ).map( resp -> ResponseEntity.ok( resp ) ).orElse( ResponseEntity.status (HttpStatus.UNAUTHORIZED ).build( ) );
-	}
-	
-	@PostMapping( "/cadastrar" )
-	public ResponseEntity<Usuario> Post( @RequestBody Usuario usuario )
-	{
-		return ResponseEntity.status( HttpStatus.CREATED ).body( usuarioService.CadastrarUsuario( usuario ) );
-	}
-	
 	@GetMapping( "/todos" )
 	public ResponseEntity<Object> buscarTodos( ) 
 	{
 		List<Usuario> listaUsuarios = repoUsuario.findAll( );
-
+		
 		if( listaUsuarios.isEmpty( ) ) 
 		{
 			return ResponseEntity.status( 204 ).build( );
@@ -78,10 +66,22 @@ public class UsuarioController
 		}
 	}
 	
-	@GetMapping("/pesquisa")
+	@GetMapping("/nome")
 	public ResponseEntity<List<Usuario>> buscarPorNome( @RequestParam( defaultValue = "" ) String nome ) 
 	{
 		return ResponseEntity.status( 200 ).body( repoUsuario.findAllByNomeContainingIgnoreCase( nome ) );
+	}
+	
+	@PostMapping( "/logar" )
+	public ResponseEntity<UsuarioDTO> Autentication( @RequestBody Optional<UsuarioDTO> user )
+	{
+		return usuarioService.Logar( user ).map( resp -> ResponseEntity.ok( resp ) ).orElse( ResponseEntity.status (HttpStatus.UNAUTHORIZED ).build( ) );
+	}
+	
+	@PostMapping( "/cadastrar" )
+	public ResponseEntity<Usuario> Post( @RequestBody Usuario usuario )
+	{
+		return ResponseEntity.status( HttpStatus.CREATED ).body( usuarioService.CadastrarUsuario( usuario ) );
 	}
 	
 	@PutMapping( "/alterar" )
@@ -99,8 +99,8 @@ public class UsuarioController
 		}
 	}
 	
-	@DeleteMapping( "/deletar/{id_usuario}" )
-	public ResponseEntity<Object> deletarPorId( @PathVariable( value = "id_usuario" ) Long id ) 
+	@DeleteMapping( "/deletar/{idUsuario}" )
+	public ResponseEntity<Object> deletarPorId( @PathVariable( value = "idUsuario" ) Long id ) 
 	{
 		Optional<Usuario> objetoExistente = repoUsuario.findById( id );
 		
