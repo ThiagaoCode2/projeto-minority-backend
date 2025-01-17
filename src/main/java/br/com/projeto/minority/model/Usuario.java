@@ -57,7 +57,6 @@ public class Usuario
 	@NotBlank ( message = "obrigatório campo Empresa" )
 	private String empresa;
 	
-	
 	@OneToMany( mappedBy = "usuario", cascade = CascadeType.REMOVE )
 	@JsonIgnoreProperties( {"usuario"} )
 	private List<Postagem> minhasPostagens = new ArrayList<>();
