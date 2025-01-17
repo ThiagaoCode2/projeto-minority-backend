@@ -9,6 +9,9 @@ public class UsuarioDTO
 	private String token;
 	private String tipoDeUsuario;
 	private String foto;
+	private String linkedin;
+	private String profissao;
+	private String empresa;
 	
 	public Long getId( ) 
 	{
@@ -78,6 +81,36 @@ public class UsuarioDTO
 	public void setFoto( String foto ) 
 	{
 		this.foto = foto;
+	}
+
+	public String getLinkedin( ) 
+	{
+		return linkedin;
+	}
+
+	public void setLinkedin( String linkedin ) 
+	{
+		this.linkedin = linkedin;
+	}
+
+	public String getProfissao( ) 
+	{
+		return profissao;
+	}
+
+	public void setProfissao( String profissao ) 
+	{
+		this.profissao = profissao;
+	}
+
+	public String getEmpresa( ) 
+	{
+		return empresa;
+	}
+
+	public void setEmpresa( String empresa ) 
+	{
+		this.empresa = empresa;
 	}
 	
 }

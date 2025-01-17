@@ -43,10 +43,20 @@ public class Usuario
 	@JsonFormat( pattern ="yyyy-MM-dd" )
 	private LocalDate dataNascimento;
 	
-	@NotBlank (message = "obrigatório um tipo de usuario")
+	@NotBlank( message = "obrigatório um tipo de usuario" )
 	private String tipoDeUsuario;
 	
 	private String foto;
+	
+	@NotBlank( message = "obrigatório Link do Linkedin" )
+	private String linkedin;
+	
+	@NotBlank( message = "obrigatório campo Profissao" )
+	private String profissao;
+	
+	@NotBlank ( message = "obrigatório campo Empresa" )
+	private String empresa;
+	
 	
 	@OneToMany( mappedBy = "usuario", cascade = CascadeType.REMOVE )
 	@JsonIgnoreProperties( {"usuario"} )
@@ -136,4 +146,35 @@ public class Usuario
 	{
 		this.minhasPostagens = minhasPostagens;
 	}
+
+	public String getLinkedin( ) 
+	{
+		return linkedin;
+	}
+
+	public void setLinkedin( String linkedin ) 
+	{
+		this.linkedin = linkedin;
+	}
+
+	public String getProfissao( ) 
+	{
+		return profissao;
+	}
+
+	public void setProfissao( String profissao ) 
+	{
+		this.profissao = profissao;
+	}
+
+	public String getEmpresa( ) 
+	{
+		return empresa;
+	}
+
+	public void setEmpresa( String empresa ) 
+	{
+		this.empresa = empresa;
+	}
+	
 }
