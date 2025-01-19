@@ -39,9 +39,9 @@ public class Usuario
 	@Size( min = 5, max = 100, message = "senha de 5 a 100" )
 	private String senha;
 	
-	@Column( name = "dtNascimento" )
-	@JsonFormat( pattern ="yyyy-MM-dd" )
-	private LocalDate dataNascimento;
+//	@Column( name = "dtNascimento" )
+//	@JsonFormat( pattern ="yyyy-MM-dd" )
+//	private LocalDate dataNascimento;
 	
 	@NotBlank( message = "obrigatório um tipo de usuario" )
 	private String tipoDeUsuario;
@@ -105,17 +105,17 @@ public class Usuario
 	{
 		this.senha = senha;
 	}
-
-	public LocalDate getDataNascimento( ) 
-	{
-		return dataNascimento;
-	}
-
-	public void setDataNascimento( LocalDate dataNascimento ) 
-	{
-		this.dataNascimento = dataNascimento;
-	}
-	
+//
+//	public LocalDate getDataNascimento( ) 
+//	{
+//		return dataNascimento;
+//	}
+//
+//	public void setDataNascimento( LocalDate dataNascimento ) 
+//	{
+//		this.dataNascimento = dataNascimento;
+//	}
+//	
 	public String getTipoDeUsuario( )
 	{
 		return tipoDeUsuario;

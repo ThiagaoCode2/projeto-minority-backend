@@ -20,8 +20,8 @@ import br.com.projeto.minority.repository.TemaRepository;
 
 
 @RestController
-@CrossOrigin( origins = "*", allowedHeaders = "*" )
 @RequestMapping( "/tema" )
+@CrossOrigin( origins = "*", allowedHeaders = "*" )
 public class TemaController 
 {
 	@Autowired

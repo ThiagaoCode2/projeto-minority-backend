@@ -33,8 +33,11 @@ public class BasicSecurityConfig
 	{
         http
             .authorizeHttpRequests( auth -> auth
-                .requestMatchers( HttpMethod.POST, "/usuarios/logar"     ).permitAll( )
-                .requestMatchers( HttpMethod.POST, "/usuarios/cadastrar" ).permitAll( )
+//                .requestMatchers( HttpMethod.POST, "/usuarios/logar"     ).permitAll( )
+//                .requestMatchers( HttpMethod.POST, "/usuarios/cadastrar" ).permitAll( )
+                .requestMatchers( "/usuarios/**"  ).permitAll( ) // Permitir acesso ao endpoint /usuarios
+                .requestMatchers( "/tema/**"      ).permitAll( ) // Permitir acesso ao endpoint /tema
+                .requestMatchers( "/postagens/**" ).permitAll( ) // Permitir acesso ao endpoint /postagens
                 .anyRequest( ).authenticated( )
             )
             .httpBasic( )
