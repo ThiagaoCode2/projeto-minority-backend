@@ -34,7 +34,7 @@ public class Postagem
 	private Date date = new java.sql.Date( System.currentTimeMillis( ) );
 	
 	@ManyToOne 
-	@JsonIgnoreProperties( "Postagem" )
+	@JsonIgnoreProperties( "postagem" )
 	private Tema tema;
 	
 	@ManyToOne( fetch = FetchType.EAGER )

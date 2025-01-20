@@ -39,26 +39,31 @@ public class Usuario
 	@Size( min = 5, max = 100, message = "senha de 5 a 100" )
 	private String senha;
 	
-	@Column( name = "dtNascimento" )
-	@JsonFormat( pattern ="yyyy-MM-dd" )
-	private LocalDate dataNascimento;
+//	@Column( name = "dtNascimento" )
+//	@JsonFormat( pattern ="yyyy-MM-dd" )
+//	private LocalDate dataNascimento;
+	
+	@NotBlank( message = "obrigatório um tipo de usuario" )
+	private String tipoDeUsuario;
+	
+	private String foto;
+	
+	@NotBlank( message = "obrigatório Link do Linkedin" )
+	private String linkedin;
+	
+	@NotBlank( message = "obrigatório campo Profissao" )
+	private String profissao;
+	
+	@NotBlank ( message = "obrigatório campo Empresa" )
+	private String empresa;
 	
 	@OneToMany( mappedBy = "usuario", cascade = CascadeType.REMOVE )
 	@JsonIgnoreProperties( {"usuario"} )
 	private List<Postagem> minhasPostagens = new ArrayList<>();
 	
-	public Usuario( Long id, String nome, String usuario, String senha, LocalDate dataNascimento ) 
+	public Usuario( ) 
 	{
-		this.id             = id;
-		this.nome           = nome;
-		this.usuario        = usuario;
-		this.senha          = senha;
-		this.dataNascimento = dataNascimento;
-	}
-	
-	public Usuario( )
-	{
-		//Null
+		
 	}
 
 	public Long getId( ) 
@@ -100,15 +105,35 @@ public class Usuario
 	{
 		this.senha = senha;
 	}
-
-	public LocalDate getDataNascimento( ) 
+//
+//	public LocalDate getDataNascimento( ) 
+//	{
+//		return dataNascimento;
+//	}
+//
+//	public void setDataNascimento( LocalDate dataNascimento ) 
+//	{
+//		this.dataNascimento = dataNascimento;
+//	}
+//	
+	public String getTipoDeUsuario( )
 	{
-		return dataNascimento;
+		return tipoDeUsuario;
 	}
 
-	public void setDataNascimento( LocalDate dataNascimento ) 
+	public void setTipoDeUsuario( String tipoDeUsuario )
 	{
-		this.dataNascimento = dataNascimento;
+		this.tipoDeUsuario = tipoDeUsuario;
+	}
+
+	public String getFoto( ) 
+	{
+		return foto;
+	}
+
+	public void setFoto( String foto ) 
+	{
+		this.foto = foto;
 	}
 
 	public List<Postagem> getMinhasPostagens( ) 
@@ -120,4 +145,35 @@ public class Usuario
 	{
 		this.minhasPostagens = minhasPostagens;
 	}
+
+	public String getLinkedin( ) 
+	{
+		return linkedin;
+	}
+
+	public void setLinkedin( String linkedin ) 
+	{
+		this.linkedin = linkedin;
+	}
+
+	public String getProfissao( ) 
+	{
+		return profissao;
+	}
+
+	public void setProfissao( String profissao ) 
+	{
+		this.profissao = profissao;
+	}
+
+	public String getEmpresa( ) 
+	{
+		return empresa;
+	}
+
+	public void setEmpresa( String empresa ) 
+	{
+		this.empresa = empresa;
+	}
+	
 }
