@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableMethodSecurity
@@ -33,8 +35,11 @@ public class BasicSecurityConfig
 	{
         http
             .authorizeHttpRequests( auth -> auth
-                .requestMatchers( HttpMethod.POST, "/usuarios/logar"     ).permitAll( )
-                .requestMatchers( HttpMethod.POST, "/usuarios/cadastrar" ).permitAll( )
+//                .requestMatchers( HttpMethod.POST, "/usuarios/logar"     ).permitAll( )
+//                .requestMatchers( HttpMethod.POST, "/usuarios/cadastrar" ).permitAll( )
+                .requestMatchers( "/usuarios/**"  ).permitAll( ) // Permitir acesso ao endpoint /usuarios
+                .requestMatchers( "/tema/**"      ).permitAll( ) // Permitir acesso ao endpoint /tema
+                .requestMatchers( "/postagens/**" ).permitAll( ) // Permitir acesso ao endpoint /postagens
                 .anyRequest( ).authenticated( )
             )
             .httpBasic( )
@@ -68,6 +73,21 @@ public class BasicSecurityConfig
                 .roles( "USER" )
                 .build( )
         );
+    }
+    
+    @Bean
+    public WebMvcConfigurer corsConfigurer( ) 
+    {
+        return new WebMvcConfigurer( ) 
+        {
+            @Override
+            public void addCorsMappings( CorsRegistry registry ) 
+            {
+                registry.addMapping( "/**" )
+                        .allowedOrigins( "*" )
+                        .allowedMethods( "GET", "POST", "PUT", "DELETE", "OPTIONS" );
+            }
+        };
     }
 
 }

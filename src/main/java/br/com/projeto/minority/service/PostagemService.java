@@ -51,6 +51,7 @@ public class PostagemService
 		return repoPostegem.findById( postagemParaAlterar.getId( ) ).map( postagemExistente -> {
 			postagemExistente.setTitulo( postagemParaAlterar.getTitulo( ) );
 			postagemExistente.setTexto ( postagemParaAlterar.getTexto( )  );
+			postagemExistente.setTema  ( postagemParaAlterar.getTema( )   );
 			
 			return Optional.ofNullable( repoPostegem.save( postagemExistente ) );
 			
