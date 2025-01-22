@@ -1,5 +1,5 @@
 # Etapa 1: Build da aplicação
-FROM maven:3.8.8-eclipse-temurin-17 as builder
+FROM maven:3.8.8-amazoncorretto-23 as builder
 WORKDIR /app
 
 # Copia o código-fonte e o arquivo pom.xml
@@ -10,7 +10,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Configuração do ambiente de execução
-FROM eclipse-temurin:17-jdk-alpine
+FROM amazoncorretto:23
 WORKDIR /app
 
 # Copia o .jar gerado da etapa anterior
